@@ -6,8 +6,8 @@ import cv2
 import zmq
 from picamera2 import Picamera2
 
-ANALYSIS_IP = "100.95.233.111"  
-#ANALYSIS_IP = "100.79.159.86"
+ANALYSIS_IP = ""  
+
 PORT = 5555
 
 context = zmq.Context()
