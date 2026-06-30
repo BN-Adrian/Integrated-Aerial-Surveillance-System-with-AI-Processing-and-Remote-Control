@@ -1,0 +1,36 @@
+services:
+  tailscale_site:
+    image: tailscale/tailscale:stable
+    container_name: tailscale_ollama
+    hostname: docker-container-tailscale
+    environment:
+      - TS_AUTHKEY=tskey-auth-kJCogx1Db311CNTRL-RztZ1troEzD9ieHtCdDZzDFkfpLmmqz1
+      - TS_STATE_DIR=/var/lib/tailscale
+    volumes:
+      - ./tailscale_ollama_state:/var/lib/tailscale
+      - /dev/net/tun:/dev/net/tun
+    cap_add:
+      - NET_ADMIN
+      - NET_RAW
+    restart: unless-stopped
+
+  ollama-ai:
+    image: ollama/ollama:latest
+    container_name: ollama_ai
+    volumes:
+      - ./ollama_data:/root/.ollama
+    environment:
+      - OLLAMA_KEEP_ALIVE=-1
+      - OLLAMA_HOST=0.0.0.0
+      #add
+      - OLLAMA_FLASH_ATTENTION=0
+      #- OLLAMA_KV_CACHE_TYPE=q8_0
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    network_mode: "service:tailscale_site"
+    restart: unless-stopped
