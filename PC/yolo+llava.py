@@ -17,7 +17,7 @@ FRAME_INTERVAL  = 1.0 / TARGET_FPS
 
 
 
-OLLAMA_URL      = "http://100.79.159.86:11434/api/generate"
+OLLAMA_URL      = ""
 LLAVA_MODEL = "llava-phi3"
 OLLAMA_TIMEOUT  = 30
 
