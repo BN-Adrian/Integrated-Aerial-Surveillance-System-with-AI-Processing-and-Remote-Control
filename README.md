@@ -31,15 +31,15 @@ Two pipelines run simultaneously, in opposite directions:
 
 ```
 ┌─────────────┐    ZMQ:5555    ┌──────────────────┐    ZMQ:5556    ┌─────────────┐    Moonlight    ┌──────┐
-│  RPi 5 +    │  ─────────────▶│   Processing PC  │  ─────────────▶│   Laptop    │  ──────────────▶│ iPad │
+│  RPi 5 +    │ ────────────▶ │   Processing PC  │ ─────────────▶│   Laptop    │ ──────────────▶│ iPad │
 │  IMX500     │   1280x720     │  YOLOv8n + LLaVA │   854x480      │ Apollo/ZMQ  │                 │      │
-│  + 4G modem │   15 FPS       │  RTX 3070 GPU    │   15 FPS       │  Joystick   │◀── commands ────│      │
+│  + 4G modem │   15 FPS       │  RTX 3070 GPU    │   15 FPS       │  Joystick   │◀── commands ───│      │
 └──────┬──────┘                └──────────────────┘                └──────┬──────┘                 └──────┘
        │                                                                  │
-       │ MAVLink 57600 baud                                                │ ZMQ:5556 (JSON, 120 Hz)
+       │ MAVLink 57600 baud                                               │ ZMQ:5556 (JSON, 120 Hz)
        ▼                                                                  │
 ┌─────────────┐                                                           │
-│  Pixhawk    │◀──────────────────────────────────────────────────────────┘
+│  Pixhawk    │◀─────────────────────────────────────────────────────────┘
 │  2.4.8      │              Tailscale VPN (WireGuard, over 4G)
 │  ArduCopter │
 └─────────────┘
