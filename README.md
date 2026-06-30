@@ -102,7 +102,7 @@ The main bottleneck identified during testing was the 4G modem's upload bandwidt
 ## Author
 
 **Bejan Nelu Adrian** — MSc Information Technologies for Telecommunications, FETTI, "Gheorghe Asachi" Technical University of Iași
-Scientific coordinator: Assoc. Prof. Dr. Eng. Hagan Marius Gheorghe
+
 
 ---
 
